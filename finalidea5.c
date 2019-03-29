@@ -2,7 +2,6 @@
 CS 201 Portfolio Project
 Allison Price
 
--  INPUT CAN BE MORE THAN A STRING
 
 */
 
