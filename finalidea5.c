@@ -375,7 +375,6 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
 
    int numDice = bsize * bsize;
    int a = numDice - 1;
-   //struct Letter boggle[bsize][bsize];
 
    struct Letter *boggle[bsize];
    for (int i = 0; i < bsize; i ++) {  // Dynamically allocating space for the board
