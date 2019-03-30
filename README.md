@@ -10,10 +10,10 @@ of 30 letters.
 After execution, the game asks the user to choose game between two game modes: single 
 player or two player by entering either a "t" or an "s". The game then asks for the board size. 
 The size should be entered as one number, for instance, if a 5 is entered, a 5x5 board will be 
-printed. Then the game asks for the name of the dictionary file, which is expected to be a 
-text file with each word separated by a new line. When reading in and storing the dictionary, 
-the code ignores words with capital letters, assuming them to be proper nouns, and ignores 
-punctuation or words that contain special characters. 
+printed. Then the game asks for the name of a locally stored dictionary file, which is expected 
+to be a text file with each word separated by a new line. When reading in and storing the
+dictionary, the code ignores words with capital letters, assuming them to be proper nouns, and 
+ignores punctuation or words that contain special characters. 
 
 The game then recursively searches for all words in the board. As it finds the words,
 it stores them into a different trie called wordList. After finding all words, the board 
