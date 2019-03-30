@@ -2,7 +2,6 @@
 CS 201 Portfolio Project
 Allison Price
 
-
 */
 
 #include <stdio.h>
@@ -143,26 +142,12 @@ bool search(struct TrieNode *root, char *key) // GEEKS FOR GEEKS
 *    Link: https://www.geeksforgeeks.org/trie-display-content/
 *
 ***************************************************************************************/
-
-bool isLeafNode(struct TrieNode* root) // GEEKS FOR GEEKS
-{
-    return root->isEndOfWord != false;
-}
-
-/***************************************************************************************
-*    Title: Trie | (Display Content)
-*    Author: Yash Singla
-*    Date Accessed: 3/ 5/ 2019
-*    Availability: GeeksforGeeks
-*    Link: https://www.geeksforgeeks.org/trie-display-content/
-*
-***************************************************************************************/
 void display(struct TrieNode* root, char str[], int level)  // GEEKS FOR GEEKS
 {
     // If node is leaf node, it indicates end
     // of string, so a null character is added
     // and string is displayed
-    if (isLeafNode(root))
+    if (root->isEndOfWord != false)
     {
         str[level] = '\0';
         printf("%s\n", str);
