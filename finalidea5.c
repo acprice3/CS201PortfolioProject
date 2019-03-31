@@ -114,7 +114,7 @@ that needs to be ignored while storing the dictionary*/
 *    Link: https://www.geeksforgeeks.org/trie-insert-and-search/
 *
 ***************************************************************************************/
-bool search(struct TrieNode *root, char *key) // GEEKS FOR GEEKS
+bool search(struct TrieNode *root, char *key) 
 {
 
     int level;
@@ -142,7 +142,7 @@ bool search(struct TrieNode *root, char *key) // GEEKS FOR GEEKS
 *    Link: https://www.geeksforgeeks.org/trie-display-content/
 *
 ***************************************************************************************/
-void display(struct TrieNode* root, char str[], int level)  // GEEKS FOR GEEKS
+void display(struct TrieNode* root, char str[], int level)  
 {
     // If node is leaf node, it indicates end
     // of string, so a null character is added
