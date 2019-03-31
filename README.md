@@ -46,11 +46,11 @@ is not allowed to repeat words, since as they are entered they are stored in a s
 characters, the word is checked against the wordList trie. The point value of the word depends on the word length. 
 The Boggle rules for point assignment are as follows: 
 
--3 and 4 letters: 1 point
--5 letters: 2 points
--6 letters: 3 points
--7 letters: 5 points 
--8 letters and up: 11 points 
+- 3 and 4 letters: 1 point
+- 5 letters: 2 points
+- 6 letters: 3 points
+- 7 letters: 5 points 
+- 8 letters and up: 11 points 
 
 After 3 minutes, the round should be over. The user can end the round by typing "endround" in the "Enter Word" space. 
 At this point, the computer will display a list of all words possible in the board. In single player, the computer will then
