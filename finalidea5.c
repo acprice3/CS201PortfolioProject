@@ -417,8 +417,8 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
    int letterIndex;
    char letters[20]; // Variable used in displaying the wordList trie
    int score = 0;
-   char word[30];
-   char word2[30];
+   char word[31];
+   char word2[31];
 
    struct TrieNode *wordList = getNode(); // Make a new trie holding the words found in the board
    struct TrieNode *userWords = getNode(); // Make a third trie to hold the words entered by the user
@@ -445,7 +445,7 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
    while(1) {
 
       printf("\nEnter Word (one by one): ");
-      scanf("%29s", word);
+      scanf("%30s", word);
 
       if (!onlyLowerAlpha(word)) {
         printf("Not a valid word! Make sure you're only using lowercase letters\n");
