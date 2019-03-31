@@ -64,7 +64,7 @@ void insertDictionary(struct TrieNode *branch, char *str)
 {
 
     struct TrieNode *newNode = branch;
-    for(int a = 0; a < strlen(str) - 1; a ++) {
+    for(int a = 0; a < strlen(str) - 1; a ++) { // This for loop differentiates between insertDictionary and insertToWordList
 
       if(newNode -> children[giveIndex(str[a])] == NULL) {
         newNode -> children[giveIndex(str[a])] = getNode();
@@ -91,16 +91,14 @@ that needs to be ignored while storing the dictionary*/
   void insertToWordList(struct TrieNode *root, const char *key)
 {
 
-    int index;
     struct TrieNode *pCrawl = root;
 
     for (int a = 0; a < strlen(key); a++)
     {
-        index = giveIndex(key[a]);
-        if (!pCrawl->children[index])
-            pCrawl->children[index] = getNode();
+        if (!pCrawl->children[ giveIndex(key[a])])
+            pCrawl->children[ giveIndex(key[a])] = getNode();
 
-        pCrawl = pCrawl->children[index];
+        pCrawl = pCrawl->children[giveIndex(key[a])];
     }
 
     pCrawl->isEndOfWord = true;
@@ -114,21 +112,16 @@ that needs to be ignored while storing the dictionary*/
 *    Link: https://www.geeksforgeeks.org/trie-insert-and-search/
 *
 ***************************************************************************************/
-bool search(struct TrieNode *root, char *key) 
+bool search(struct TrieNode *root, char *key)
 {
-
-    int level;
-    int length = strlen(key);
-    int index;
     struct TrieNode *pCrawl = root;
 
-    for (level = 0; level < length; level++)
+    for (int i = 0; i < strlen(key); i++)
     {
-        index = giveIndex(key[level]);
-        if (!pCrawl->children[index])
+        if (!pCrawl->children[giveIndex(key[level]))
             return false;
 
-        pCrawl = pCrawl->children[index];
+        pCrawl = pCrawl->children[giveIndex(key[level])];
     }
 
     return (pCrawl != NULL && pCrawl->isEndOfWord);
@@ -142,7 +135,7 @@ bool search(struct TrieNode *root, char *key)
 *    Link: https://www.geeksforgeeks.org/trie-display-content/
 *
 ***************************************************************************************/
-void display(struct TrieNode* root, char str[], int level)  
+void display(struct TrieNode* root, char str[], int level)
 {
     // If node is leaf node, it indicates end
     // of string, so a null character is added
@@ -169,6 +162,7 @@ void display(struct TrieNode* root, char str[], int level)
     }
 }
 
+/*Returns the lowercase value of the letter so long as it is currently an uppercase letter */
 char lower(char a) {
 {
     if ((a >= 65) && (a <= 90))
@@ -177,6 +171,7 @@ char lower(char a) {
   }
 }
 
+/*Makes sure that a string only contains integers and no character*/
 bool isNumber(char *str) {
    for (int i = 0; i < strlen(str); i ++) {
      if (isdigit(str[i]) == false) {
@@ -408,7 +403,7 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
       if ((strlen(str) > 2) && (onlyLowerAlpha(str) == true)) { // Ensures that the word is longer than two
          str[strlen(str) - 1] = '\0';                           // letters and only composed of lowercase letters
          insertDictionary(root, str);
-         insertedWords++; // THe number of words that are stored in the dictionary trie
+         insertedWords++; // The number of words that are stored in the dictionary trie
       }
     }
 
@@ -432,7 +427,7 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
                }
             }
 
-         for (int z = 0; z < 30; z ++) {
+         for (int z = 0; z < 31; z ++) {
             word2[z] = '\0';
            }
 
@@ -456,21 +451,21 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
        }
 
       else if ((strlen(word) > numDice) || strlen(word) < 3 || strlen(word) > 30) {  // If the word has more letters than there are dice on the board
-         printf("Not a valid word length!\n ");
-       }
+         printf("Not a valid word length!\n ");                                      // or is shorter than 3 letters, or is longer than the maximum
+       }                                                                             //  word length
 
        else {
 
       bool there = search(wordList, word);
 
       if (there == true) {                               // If the word exists in the dictionary
-         bool alreadyFound = search(userWords, word);
-         if (alreadyFound == true ) {
+         bool alreadyFound = search(userWords, word);    // check to see if it has already been found
+         if (alreadyFound == true ) {                    // if it has, don't give more points for it
            printf("That word has already been found!\n");
          }
 
-         else {
-           insertToWordList(userWords, word);
+         else {                                           // If it hasn't already been found, then store it into the userWords
+           insertToWordList(userWords, word);             // trie and update the score
            score = calcScore(word, score);
            printf("Nice! Your current score is %d\n", score);
         }
@@ -485,6 +480,7 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
    printf("\n\nThe computer found the following words: \n");
    display(wordList, letters, level); // Displays the list of all words in the board
 
+//Free all allocated memory
    free(root);
    free(wordList);
    free(userWords);
@@ -557,13 +553,13 @@ int main(void) {
    printf("\n\nChoose Game Mode: \nS - Single Player \nT - Two Player \n");
    scanf("%s", gMode);
 
-   while (strlen(gMode) >= 2) {
+   while (strlen(gMode) >= 2) { // Makes sure the user only enters one letter
      printf("Only enter one letter! Try again: \n");
      scanf("%s", gMode);
    }
 
    gameMode = gMode[0]; // Converting gMode to a character
-   while (gameMode != 'S' && gameMode != 's' && gameMode != 'T' && gameMode != 't') { // if not s or t, then it exits the game
+   while (gameMode != 'S' && gameMode != 's' && gameMode != 'T' && gameMode != 't') { // If not "s" or "t" ask for input again
      printf("Not a valid game mode! Try again here: ");
      scanf(" %c", &gameMode);
    }
@@ -571,18 +567,18 @@ int main(void) {
    printf("\nBoard Size (in form NxN)? Enter a side length: ");
    scanf("%s", size);
 
-   while (!isNumber(size)) {
-     printf("Not a valid board size! Try again: ");
-     scanf("%s", size);
+   while (!isNumber(size)) { // Makes sure that the user enters a number for board size
+     printf("Not a valid board size! Try again: "); // Asks for input again if the board size entered contains anything
+     scanf("%s", size);                             // besides numbers
    }
 
-   bsize = atoi(size);
+   bsize = atoi(size);                             // Converts to an integer
 
    printf("\nWhat is the name of the dictionary file?\n");
    scanf("%s", dictionaryFile);
 
    dictionary = fopen(dictionaryFile, "r");
-   while (dictionary == NULL) {
+   while (dictionary == NULL) { // Ensures that the dictionary file entered isn't NULL
       printf("Error! Can't find that dictionary file! Enter a different one: \n");
       scanf("%s", dictionaryFile);
       dictionary = fopen(dictionaryFile, "r");
@@ -603,7 +599,7 @@ int main(void) {
          printf("Start your timer now!\n\n");
          pscore = gamePlay(bsize, dictionaryFile ,diceArray);
 
-         if (pscore > highScore) {
+         if (pscore > highScore) { // Updates high score
             highScore = pscore;
          }
 
@@ -612,12 +608,12 @@ int main(void) {
           printf("\nPlay again? Enter 'y' or 'n': ");
           scanf("%s", again);
 
-          while (strlen(again) >= 2) {
+          while (strlen(again) >= 2) { // Make sure the user enters only one character
             printf("Only enter one letter! Try again: ");
             scanf("%s", again);
           }
 
-          playAgain = again[0];
+          playAgain = again[0]; // Convert to character
           while (playAgain != 'y' && playAgain != 'Y' && playAgain != 'n' && playAgain != 'N') {
             printf("Not a valid answer! Try again: ");
             scanf(" %c", &playAgain);
@@ -641,7 +637,7 @@ int main(void) {
          printf("\n\nPlayer 2's Turn! The timer starts now!\n\n");
          p2score = gamePlay(bsize, dictionaryFile ,diceArray);
 
-         if (p1score > p2score) {
+         if (p1score > p2score) {  // Keeps track of game count
             printf("Player 1 Wins!\n");
             p1games++;
          }
@@ -661,14 +657,14 @@ int main(void) {
    printf("\n\nPlay again? Enter 'y' or 'n': ");
    scanf("%s", again);
 
-   while (strlen(again) >= 2) {
+   while (strlen(again) >= 2) { // If the user enters more than one character, ask for the input again
      printf("Only enter one letter! Try again: ");
      scanf("%s", again);
    }
 
-   playAgain = again[0];
-   while (playAgain != 'y' && playAgain != 'Y' && playAgain != 'n' && playAgain != 'N') {
-     printf("Not a valid answer! Try again: ");
+   playAgain = again[0]; // Convert it to a character
+   while (playAgain != 'y' && playAgain != 'Y' && playAgain != 'n' && playAgain != 'N') { // If the one character
+     printf("Not a valid answer! Try again: ");                                           // isn't "y" or "n" then ask for it again
      scanf(" %c", &playAgain);
     }
   }
