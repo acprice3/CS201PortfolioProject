@@ -19,15 +19,15 @@ The game also follows a few rules based on my program itself:
 There a few steps to follow to start the game. After compilation (done through typing "make") the 
 game is executed by typing "./boggle" in the command line. The game asks for 3 things: 
 
-1.) The game mode. This is going to be either "s" or "t" for single player or two player. 
-2.) The board size. This is going to be a single number. For instance, if a 5 is entered, a 5x5 board
+1. The game mode. This is going to be either "s" or "t" for single player or two player. 
+2. The board size. This is going to be a single number. For instance, if a 5 is entered, a 5x5 board
     will be generated. Though you can choose to generate a board of any size, I recommend choosing 
     somewhere between 4x4 and 45x45. This is because, since the board is generated randomly, there is a 
     chance that the board could be unsolvable (as in, it could contain no words) if it is too small. While the
     game can reach much larger sizes than 45x45, at that point, the lines of letters will begin to overlap, 
     and since Boggle relies on being able to see which letters are adjacent, this makes the game much more 
     difficult to play. 
-3.) The dictionary file. This should be stored locally and should contain words separated by a newline.
+3. The dictionary file. This should be stored locally and should contain words separated by a newline.
     My program will ignore any words containing capital letters or punctuation, so the words in the
     file should be entirely composed of lowercase letters. The list that I used can be found at this
     link: https://users.cs.duke.edu/~ola/ap/linuxwords. If you decide to use this file, just store it 
@@ -46,11 +46,11 @@ is not allowed to repeat words, since as they are entered they are stored in a s
 characters, the word is checked against the wordList trie. The point value of the word depends on the word length. 
 The Boggle rules for point assignment are as follows: 
 
-3 and 4 letters: 1 point
-5 letters: 2 points
-6 letters: 3 points
-7 letters: 5 points 
-8 letters and up: 11 points 
+-3 and 4 letters: 1 point
+-5 letters: 2 points
+-6 letters: 3 points
+-7 letters: 5 points 
+-8 letters and up: 11 points 
 
 After 3 minutes, the round should be over. The user can end the round by typing "endround" in the "Enter Word" space. 
 At this point, the computer will display a list of all words possible in the board. In single player, the computer will then
