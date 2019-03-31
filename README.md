@@ -59,6 +59,6 @@ In two player mode this will generate another random board and then give an inst
 player. Once the second player types "endround" the computer will display who won that round, along with a current game count, 
 and the users will have the option to enter "y" or "n" to play another round or not. 
 
-For further instructions: my video tutorial for this game can be found at this link: https://youtu.be/aBy1aWufFw4
+For further instructions my video tutorial for this game can be found at this link: https://youtu.be/aBy1aWufFw4
 
 
