@@ -28,12 +28,13 @@ game is executed by typing "./boggle" in the command line. The game asks for 3 t
     and since Boggle relies on being able to see which letters are adjacent, this makes the game much more 
     difficult to play. 
 3. The dictionary file. This should be stored locally and should contain words separated by a newline.
-    My program will ignore any words containing capital letters or punctuation, so the words in the
-    file should be entirely composed of lowercase letters. The list that I used can be found at this
+    My program will ignore any words containing capital letters or punctuation, so the only words stored from the
+    file will be entirely composed of lowercase letters. The list that I used can be found at this
     link: https://users.cs.duke.edu/~ola/ap/linuxwords. If you decide to use this file, just store it 
     into a .txt file and enter the title, for example "words.txt" when the game asks for the dictionary 
     file. Otherwise, any dictionary file will work so long as it matches the format (separated by a newline, 
-    with all non-proper nouns composed entirely of lowercase letters and no punctuation or special characters)
+    with all non-proper nouns composed entirely of lowercase letters). Again, all proper nouns and words containing
+    punctuation will be ignored and not stored. 
 
 The game will then display the board and an instruction to start your timer. This can be done on a phone or simply 
 through the clock on your computer. The game will then recursively search through the board to find all possible words. 
