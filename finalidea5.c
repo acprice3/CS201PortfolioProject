@@ -339,7 +339,7 @@ int calcScore(char *str, int currScore) {
       return currScore += 11;
     }
     else if (size == 7) {
-      return currScore += 4;
+      return currScore += 5;
     }
     else if (size == 6) {
       return currScore += 3;
@@ -455,8 +455,8 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
           break;
        }
 
-      else if ((strlen(word) > numDice) || strlen(word) < 3) {  // If the word has more letters than there are dice on the board
-         printf("Not a valid word length! ");
+      else if ((strlen(word) > numDice) || strlen(word) < 3 || strlen(word) > 30) {  // If the word has more letters than there are dice on the board
+         printf("Not a valid word length!\n ");
        }
 
        else {
@@ -669,7 +669,7 @@ int main(void) {
    playAgain = again[0];
    while (playAgain != 'y' && playAgain != 'Y' && playAgain != 'n' && playAgain != 'N') {
      printf("Not a valid answer! Try again: ");
-     scanf(" %c", &again);
+     scanf(" %c", &playAgain);
     }
   }
 }
