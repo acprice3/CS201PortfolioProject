@@ -415,7 +415,7 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
    fclose(dictionary);
    int level = 0;
    int letterIndex;
-   char letters[20]; // Variable used in displaying the wordList trie
+   char letters[31]; // Variable used in displaying the wordList trie
    int score = 0;
    char word[31];
    char word2[31];
