@@ -118,7 +118,7 @@ bool search(struct TrieNode *root, char *key)
 
     for (int i = 0; i < strlen(key); i++)
     {
-        if (!pCrawl->children[giveIndex(key[i]))
+        if (!pCrawl->children[giveIndex(key[i])])
             return false;
 
         pCrawl = pCrawl->children[giveIndex(key[i])];
