@@ -445,7 +445,7 @@ int gamePlay(int bsize, char *dictionaryFile, char *diceArray[17]) {
    while(1) {
 
       printf("\nEnter Word (one by one): ");
-      scanf("%s", word);
+      scanf("%29s", word);
 
       if (!onlyLowerAlpha(word)) {
         printf("Not a valid word! Make sure you're only using lowercase letters\n");
