@@ -30,11 +30,14 @@ game is executed by typing "./boggle" in the command line. The game asks for 3 t
 3. The dictionary file. This should be stored locally and should contain words separated by a newline.
     My program will ignore any words containing capital letters or punctuation, so the only words stored from the
     file will be entirely composed of lowercase letters. The list that I used can be found at this
-    link: https://users.cs.duke.edu/~ola/ap/linuxwords. If you decide to use this file, just store it 
-    into a .txt file and enter the title, for example "words.txt" when the game asks for the dictionary 
-    file. Otherwise, any dictionary file will work so long as it matches the format (separated by a newline, 
-    with all non-proper nouns composed entirely of lowercase letters). Again, all proper nouns and words containing
-    punctuation will be ignored and not stored. 
+    link: https://users.cs.duke.edu/~ola/ap/linuxwords. On Google Chrome this file displays with each word separated
+    by a newline, but on other browsers (such as Microsoft Edge) the file displays with spaces in between words. 
+    The file will NOT work correctly if there are not newlines separating the words. So if you decide to use this file, 
+    make sure that it is opened on a browser that shows the words separated by newlines, then save it into a .txt 
+    file and enter the title, for example "words.txt" when the game asks for the dictionary file. Otherwise, any 
+    dictionary file will work so long as it matches the format (separated by a newline, with all non-proper nouns 
+    composed entirely of lowercase letters). Again, all proper nouns and words containing punctuation will be ignored 
+    and not stored. 
 
 The game will then display the board and an instruction to start your timer. This can be done on a phone or simply 
 through the clock on your computer. The game will then recursively search through the board to find all possible words. 
